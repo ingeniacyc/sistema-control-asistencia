@@ -81,8 +81,10 @@
         let result = await response.json();
         
         if (result.tipoUsuario === "admin") {
+          mensaje.innerHTML = "<div class='alert alert-danger'>Admin</div>";
             window.location.href = "https://ingeniacyc.github.io/sistema-control-asistencia/inicio-block.html"; // Redirección a GitHub Pages
         } else if (result.tipoUsuario === "trabajador") {
+          mensaje.innerHTML = "<div class='alert alert-danger'>Trabajador</div>";
             window.location.href = "https://tuusuario.github.io/tu-repo/indexusuario.html";
         } else {
             mensaje.innerHTML = "<div class='alert alert-danger'>Usuario o contraseña incorrectos</div>";
