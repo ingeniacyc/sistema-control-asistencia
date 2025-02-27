@@ -65,32 +65,29 @@
 
   <script>
   async function iniciarSesion() {
-    var usuario = document.getElementById("usuario").value;
-    var clave = document.getElementById("clave").value;
-    
-    const apiUrl = "https://script.google.com/macros/s/AKfycbwu6j9vXO2Gh2NBkufqCxfbOerNNkVFo_6VImvLFyvxHH_fjyA86y4P-4BrDD4iHLVoHA/exec"; // NO guardes aquí en producción, usa variables de entorno.
+        let usuario = document.getElementById("usuario").value;
+        let clave = document.getElementById("clave").value;
+        let mensaje = document.getElementById("mensaje");
 
-    try {
-      let response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ usuario, clave }),
-      });
+        let url = "https://script.google.com/macros/s/AKfycbwu6j9vXO2Gh2NBkufqCxfbOerNNkVFo_6VImvLFyvxHH_fjyA86y4P-4BrDD4iHLVoHA/exec"; // Reemplaza con tu URL de Apps Script
+        let data = { usuario, clave };
 
-      let data = await response.json();
-      
-      if (data.tipoUsuario === "admin") {
-        window.location.href = "admin.html"; // Página de admin en GitHub
-      } else if (data.tipoUsuario === "trabajador") {
-        window.location.href = "usuario.html"; // Página de trabajador en GitHub
-      } else {
-        document.getElementById("mensaje").innerHTML = "<div class='alert alert-danger'>Usuario o contraseña incorrectos</div>";
-      }
-    } catch (error) {
-      console.error("Error en la API:", error);
-      document.getElementById("mensaje").innerHTML = "<div class='alert alert-danger'>Error de conexión</div>";
+        let response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" }
+        });
+
+        let result = await response.json();
+        
+        if (result.tipoUsuario === "admin") {
+            window.location.href = "https://tuusuario.github.io/tu-repo/index.html"; // Redirección a GitHub Pages
+        } else if (result.tipoUsuario === "trabajador") {
+            window.location.href = "https://tuusuario.github.io/tu-repo/indexusuario.html";
+        } else {
+            mensaje.innerHTML = "<div class='alert alert-danger'>Usuario o contraseña incorrectos</div>";
+        }
     }
-  }
 </script>
 
 </body>
