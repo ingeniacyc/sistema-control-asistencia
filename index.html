@@ -43,7 +43,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.href = data.role === "admin" ? "index.html" : "indexusuario.html";
+                    window.location.href = data.role === "admin" ? "index2.html" : "indexusuario.html";
                 } else {
                     alert("Credenciales incorrectas");
                 }
