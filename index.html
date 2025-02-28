@@ -48,7 +48,7 @@
             var clave = document.getElementById("clave").value;
             var data = { usuario: usuario, clave: clave };
 
-            fetch("https://script.google.com/macros/library/d/1tC2T0Gp9wSIsTe789iUllTxNqbf4RRDa8Bi4ULz-GQxDUJAW5cN9ZJYX/5", {
+            fetch("https://script.google.com/macros/s/AKfycbzgrJWImhY2AqUQ4t1hb8g5TL51pqgZVn1XqcKL2HWjDMoscwJ9FaqECAsKWR9Hv3MnLg/exec", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
